@@ -10,7 +10,7 @@ function App() {
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
-      axios.get(url).then((response) => {
+      axios.get(url).then((response) => { // response: WeatherResponse
         setData(response.data)
         console.log(response.data)
       })
@@ -44,15 +44,15 @@ function App() {
         {data.name !== undefined &&
           <div className={styles.bottom}>
             <div className={styles.feels}>
-              {data.main ? <p className={styles.bold}>{data.main.feels_like.toFixed()}°C</p> : null}
+              {data.main && <p className={styles.bold}>{data.main.feels_like.toFixed()}°C</p> }
               <p>Feels Like</p>
             </div>
             <div className="humidity">
-              {data.main ? <p className={styles.bold}>{data.main.humidity}%</p> : null}
+              {data.main && <p className={styles.bold}>{data.main.humidity}%</p>}
               <p>Humidity</p>
             </div>
             <div className={styles.wind}>
-              {data.wind ? <p className={styles.bold}>{data.wind.speed.toFixed()} Kph</p> : null}
+              {data.wind && <p className={styles.bold}>{data.wind.speed.toFixed()} Kph</p> }
               <p>Wind Speed</p>
             </div>
           </div>
